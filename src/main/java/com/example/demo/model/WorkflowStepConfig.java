@@ -16,4 +16,5 @@ public class WorkflowStepConfig {
     private String instructions;
 
     // getters and setters
+    
 }

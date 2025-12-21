@@ -3,33 +3,50 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(
-    name = "workflow_template",
-    uniqueConstraints = @UniqueConstraint(columnNames = "templateName")
-)
+@Table(name = "workflow_templates")
 public class WorkflowTemplate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String templateName;
-    private String description;
-    private Integer totalLevels;
-    private Boolean active;
+    private String name;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    private boolean active;
 
-    public String getTemplateName() { return templateName; }
-    public void setTemplateName(String templateName) { this.templateName = templateName; }
+    // ✅ Default constructor
+    public WorkflowTemplate() {
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    // ✅ Parameterized constructor
+    public WorkflowTemplate(Long id, String name, boolean active) {
+        this.id = id;
+        this.name = name;
+        this.active = active;
+    }
 
-    public Integer getTotalLevels() { return totalLevels; }
-    public void setTotalLevels(Integer totalLevels) { this.totalLevels = totalLevels; }
+    // ✅ Getters & Setters
+    public Long getId() {
+        return id;
+    }
 
-    public Boolean getActive() { return active; }
-    public void setActive(Boolean active) { this.active = active; }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
