@@ -43,6 +43,9 @@ public class WebSecurityConfig {
                 // Auth APIs
                 .requestMatchers("/api/auth/**").permitAll()
 
+                // Public APIs (your templates endpoint)
+                .requestMatchers("/api/templates/**").permitAll()
+
                 // All other APIs need JWT
                 .anyRequest().authenticated()
             )
