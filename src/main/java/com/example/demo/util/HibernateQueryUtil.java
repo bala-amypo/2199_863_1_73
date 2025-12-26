@@ -7,9 +7,11 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Component
+@Transactional(readOnly = true)
 public class HibernateQueryUtil {
 
     @PersistenceContext
