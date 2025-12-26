@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "approval_actions")
 public class ApprovalAction {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,77 +15,28 @@ public class ApprovalAction {
     private Integer levelNumber;
     private String action;
     private String comments;
-    private LocalDateTime actionDate = LocalDateTime.now();
+    private LocalDateTime actionDate;
 
-    // Default constructor
-    public ApprovalAction() {
-    }
+    public ApprovalAction() {}
 
-    // Parameterized constructor
-    public ApprovalAction(Long id, Long requestId, Long approverId, Integer levelNumber, String action, String comments, LocalDateTime actionDate) {
-        this.id = id;
-        this.requestId = requestId;
-        this.approverId = approverId;
-        this.levelNumber = levelNumber;
-        this.action = action;
-        this.comments = comments;
-        this.actionDate = actionDate;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
+    public Long getRequestId() { return requestId; }
+    public void setRequestId(Long requestId) { this.requestId = requestId; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getApproverId() { return approverId; }
+    public void setApproverId(Long approverId) { this.approverId = approverId; }
 
-    public Long getRequestId() {
-        return requestId;
-    }
+    public Integer getLevelNumber() { return levelNumber; }
+    public void setLevelNumber(Integer levelNumber) { this.levelNumber = levelNumber; }
 
-    public void setRequestId(Long requestId) {
-        this.requestId = requestId;
-    }
+    public String getAction() { return action; }
+    public void setAction(String action) { this.action = action; }
 
-    public Long getApproverId() {
-        return approverId;
-    }
+    public String getComments() { return comments; }
+    public void setComments(String comments) { this.comments = comments; }
 
-    public void setApproverId(Long approverId) {
-        this.approverId = approverId;
-    }
-
-    public Integer getLevelNumber() {
-        return levelNumber;
-    }
-
-    public void setLevelNumber(Integer levelNumber) {
-        this.levelNumber = levelNumber;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
-
-    public LocalDateTime getActionDate() {
-        return actionDate;
-    }
-
-    public void setActionDate(LocalDateTime actionDate) {
-        this.actionDate = actionDate;
-    }
+    public LocalDateTime getActionDate() { return actionDate; }
+    public void setActionDate(LocalDateTime actionDate) { this.actionDate = actionDate; }
 }

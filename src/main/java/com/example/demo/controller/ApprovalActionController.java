@@ -2,21 +2,20 @@ package com.example.demo.controller;
 
 import com.example.demo.model.ApprovalAction;
 import com.example.demo.service.ApprovalActionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/actions")
 public class ApprovalActionController {
 
-    private final ApprovalActionService approvalActionService;
+    @Autowired
+    private ApprovalActionService approvalActionService;
 
-    public ApprovalActionController(ApprovalActionService approvalActionService) {
-        this.approvalActionService = approvalActionService;
-    }
-
-    // POST /api/actions
-    @PostMapping
-    public ApprovalAction recordAction(@RequestBody ApprovalAction action) {
-        return approvalActionService.recordAction(action);
+    @PostMapping("/")
+    public ResponseEntity<ApprovalAction> create(@RequestBody ApprovalAction action) {
+        ApprovalAction saved = approvalActionService.save(action);
+        return ResponseEntity.ok(saved);
     }
 }
