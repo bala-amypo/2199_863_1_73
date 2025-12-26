@@ -3,6 +3,7 @@ package com.example.demo.dto;
 public class AuthRequest {
     private String username;
     private String password;
+    private String usernameOrEmail;
 
     public AuthRequest() {}
 
@@ -11,4 +12,7 @@ public class AuthRequest {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+    public String getUsernameOrEmail() { return usernameOrEmail; }
+    public void setUsernameOrEmail(String usernameOrEmail) { this.usernameOrEmail = usernameOrEmail; }
 }
