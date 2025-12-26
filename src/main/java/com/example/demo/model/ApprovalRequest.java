@@ -15,6 +15,7 @@ public class ApprovalRequest {
     private String requestTitle;
 
     @Lob
+    @Column(columnDefinition = "LONGTEXT")  // ✅ FIXED: Added LONGTEXT for large JSON
     private String requestPayloadJson;
 
     private String status = "PENDING";
@@ -23,6 +24,7 @@ public class ApprovalRequest {
 
     public ApprovalRequest() {}
 
+    // Getters and setters...
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
