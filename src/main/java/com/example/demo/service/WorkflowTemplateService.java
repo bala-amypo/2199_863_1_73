@@ -19,11 +19,37 @@ public class WorkflowTemplateService {
         return workflowTemplateRepository.save(template);
     }
 
+    public WorkflowTemplate createTemplate(WorkflowTemplate template) {
+        return workflowTemplateRepository.save(template);
+    }
+
     public Optional<WorkflowTemplate> findById(Long id) {
         return workflowTemplateRepository.findById(id);
     }
 
+    public WorkflowTemplate getTemplateById(Long id) {
+        return workflowTemplateRepository.findById(id).orElse(null);
+    }
+
+    public WorkflowTemplate updateTemplate(Long id, WorkflowTemplate template) {
+        template.setId(id);
+        return workflowTemplateRepository.save(template);
+    }
+
+    public WorkflowTemplate activateTemplate(Long id, boolean active) {
+        WorkflowTemplate template = workflowTemplateRepository.findById(id).orElse(null);
+        if (template != null) {
+            template.setActive(active);
+            return workflowTemplateRepository.save(template);
+        }
+        return null;
+    }
+
     public List<WorkflowTemplate> findAll() {
+        return workflowTemplateRepository.findAll();
+    }
+
+    public List<WorkflowTemplate> getAllTemplates() {
         return workflowTemplateRepository.findAll();
     }
 }

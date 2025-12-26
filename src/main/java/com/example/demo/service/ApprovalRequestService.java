@@ -34,7 +34,24 @@ public class ApprovalRequestService {
         return approvalRequestRepository.save(request);
     }
 
+    public ApprovalRequest createRequest(ApprovalRequest request) {
+        if (request.getCreatedAt() == null) {
+            request.setCreatedAt(LocalDateTime.now());
+        }
+        return approvalRequestRepository.save(request);
+    }
+
     public List<ApprovalRequest> findAll() {
         return approvalRequestRepository.findAll();
+    }
+
+    public List<ApprovalRequest> getAllRequests() {
+        return approvalRequestRepository.findAll();
+    }
+
+    public List<ApprovalRequest> getRequestsByRequester(long requesterId) {
+        return approvalRequestRepository.findAll().stream()
+                .filter(req -> req.getRequesterId() != null && req.getRequesterId().equals(requesterId))
+                .toList();
     }
 }
