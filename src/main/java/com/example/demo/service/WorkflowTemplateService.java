@@ -27,8 +27,8 @@ public class WorkflowTemplateService {
         return workflowTemplateRepository.findById(id);
     }
 
-    public WorkflowTemplate getTemplateById(Long id) {
-        return workflowTemplateRepository.findById(id).orElseThrow();
+    public Optional<WorkflowTemplate> getTemplateById(Long id) {
+        return workflowTemplateRepository.findById(id);
     }
 
     public WorkflowTemplate updateTemplate(Long id, WorkflowTemplate template) {
